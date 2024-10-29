@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGC Servicios - Inicio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+<!-- Navegación -->
+<header class="navbar">
+    <img src="logo.png" alt="Logo SGC Servicios" class="logo">
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="sobre-nosotros.html">Sobre Nosotros</a>
+        <a href="portafolio.html">Portafolio</a>
+        <a href="contacto.html">Contacto</a>
+    </nav>
+</header>
+
+<!-- Sección Hero -->
+<div class="hero">
+    <img src="C:\Users\Claudio\Desktop\webs\sgcservicios\imagen-hero.png" alt="Imagen Hero" class="hero-image">
+    <div class="hero-content">
+        <h1>Bienvenido a SGC Servicios</h1>
+        <p>Proporcionamos soluciones integrales para tu negocio.</p>
+        <button>Contáctanos</button>
+    </div>
+</div>
+
+<!-- Mini Biografía -->
+<section class="mini-biografia" id="biografia">
+    <h2>¿Quiénes Somos?</h2>
+    <p>SGC Servicios es una empresa dedicada a brindar soluciones personalizadas en consultoría estratégica, desarrollo de sistemas y asesoría legal. Desde nuestros inicios, hemos colaborado con empresas en diversos sectores, entregando proyectos de alta calidad que impulsan el crecimiento y la eficiencia.</p>
+</section>
+
+<!-- Galería con Animación -->
+<section class="galeria" id="galeria">
+    <h2></h2>
+    <div class="galeria-grid">
+        <div class="galeria-item" data-scroll>
+            <img src="https://i.postimg.cc/3Rj8QdLn/Imagen-de-Whats-App-2024-10-29-a-las-14-22-16-22a51ebf-1.jpg" alt="Proyecto 1" class="visible">
+            <img src="https://i.postimg.cc/Vsp8Z9Lm/Imagen-de-Whats-App-2024-10-29-a-las-14-22-30-e2a1c392.jpg" alt="Proyecto 1" class="hidden">
+            <p>Implementación de Sistemas</p>
+        </div>
+        <div class="galeria-item" data-scroll>
+            <img src="https://i.postimg.cc/gkXVyprN/Imagen-de-Whats-App-2024-10-29-a-las-14-22-30-bab2b09d.jpg" alt="Proyecto 2" class="visible">
+            <img src="https://i.postimg.cc/QxZXxkLS/Imagen-de-Whats-App-2024-10-29-a-las-14-22-30-cf7433ff.jpg" alt="Proyecto 2" class="hidden">
+            <p>Consultoría Estratégica</p>
+        </div>
+        <div class="galeria-item" data-scroll>
+            <img src="https://i.postimg.cc/44Fvhy4Y/Imagen-de-Whats-App-2024-10-29-a-las-14-22-26-7430aa29.jpg" alt="Proyecto 3" class="visible">
+            <img src="https://i.postimg.cc/FRpZ6xQp/Imagen-de-Whats-App-2024-10-29-a-las-14-22-27-93677498.jpg" alt="Proyecto 3" class="hidden">
+            <p>Optimización de Procesos</p>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonios -->
+<section class="testimonios">
+    <h2>Lo que Dicen Nuestros Clientes</h2>
+    <div class="testimonios-slider">
+        <div class="testimonio-item">
+            <p>"Gracias a SGC Servicios hemos optimizado nuestros procesos en tiempo récord."</p>
+            <h4>- Juan Pérez, CEO de TechCorp</h4>
+        </div>
+        <div class="testimonio-item">
+            <p>"El equipo es profesional y eficiente. Sin duda los recomendaría."</p>
+            <h4>- María García, Directora de Marketing</h4>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-info">
+        <p>SGC Servicios &copy; 2024 - Todos los derechos reservados.</p>
+        <p>Síguenos en:</p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </div>
+</footer>
+
+<!-- JavaScript para el cambio automático de imágenes -->
+<script>
+    const galeriaItems = document.querySelectorAll('.galeria-item');
+
+    galeriaItems.forEach(item => {
+        const images = item.querySelectorAll('img');
+        let currentImageIndex = 0;
+
+        setInterval(() => {
+            images[currentImageIndex].classList.remove('visible');
+            images[currentImageIndex].classList.add('hidden');
+
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+
+            images[currentImageIndex].classList.remove('hidden');
+            images[currentImageIndex].classList.add('visible');
+        }, 9000); // Cambia cada 3 segundos
+    });
+</script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
