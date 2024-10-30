@@ -254,3 +254,52 @@ footer {
         margin: 10px 0; /* Separa los botones verticalmente */
     }
 }
+/* Estilos para el menú hamburguesa en móviles */
+.menu-toggle {
+    display: none;
+    font-size: 1.5em;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+.mobile-menu {
+    display: none;
+    flex-direction: column;
+    background-color: #FF6700;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 200px; /* Ajusta el ancho según lo necesario */
+    padding: 10px 0;
+    text-align: center;
+    border-radius: 0 0 5px 5px;
+}
+
+.mobile-menu a {
+    padding: 15px;
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.mobile-menu a:hover {
+    background-color: #FF8C00;
+}
+
+/* Mostrar el menú hamburguesa solo en dispositivos móviles */
+@media (max-width: 768px) {
+    .desktop-menu {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .mobile-menu.active {
+        display: flex;
+    }
+}
