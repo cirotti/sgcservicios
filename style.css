@@ -246,3 +246,11 @@ footer {
         padding: 20px;
     }
 }
+@media (max-width: 768px) {
+    /* Otros estilos ya presentes para pantallas pequeñas */
+
+    /* Agregamos espacio extra entre botones */
+    .hero-content button {
+        margin: 10px 0; /* Separa los botones verticalmente */
+    }
+}
