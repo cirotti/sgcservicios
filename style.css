@@ -9,6 +9,13 @@ body {
     background-color: #f4f4f4;
     scroll-behavior: smooth;
     color: #333;
+    opacity: 0;
+    animation: fadeIn 1.5s ease-in-out forwards; /* Animación de fade-in al cargar */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 .navbar {
@@ -22,15 +29,9 @@ body {
 
 /* Animación para el logo */
 @keyframes mover-logo {
-    0% {
-        transform: translateX(0);
-    }
-    50% {
-        transform: translateX(10px);
-    }
-    100% {
-        transform: translateX(0);
-    }
+    0% { transform: translateX(0); }
+    50% { transform: translateX(10px); }
+    100% { transform: translateX(0); }
 }
 
 .logo {
@@ -45,6 +46,12 @@ body {
     text-decoration: none;
     font-weight: 700;
     margin: 0 15px;
+    transition: transform 0.3s ease, color 0.3s ease; /* Transición en la barra de navegación */
+}
+
+.navbar a:hover, .navbar .logo:hover {
+    transform: scale(1.1);
+    color: #FF8C00;
 }
 
 .hero {
@@ -146,6 +153,18 @@ body {
     transform: translateY(0);
 }
 
+/* Animación de desplazamiento */
+[data-scroll] {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+[data-scroll].in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .testimonios {
     background-color: #333;
     color: white;
@@ -160,6 +179,7 @@ body {
 
 .testimonio-item {
     display: none;
+
 }
 
 footer {
