@@ -7,13 +7,28 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" href="favicon.png" sizes="128x128" type="image/png">
+
 </head>
 <body>
 
 <!-- Navegación -->
 <header class="navbar">
     <img src="logo.png" alt="Logo SGC Servicios" class="logo">
-    <nav>
+    <nav class="desktop-menu">
+        <a href="index.html">Inicio</a>
+        <a href="sobre-nosotros.html">Sobre Nosotros</a>
+        <a href="portafolio.html">Portafolio</a>
+        <a href="contacto.html">Contacto</a>
+    </nav>
+
+    <!-- Icono de menú hamburguesa visible solo en móviles -->
+    <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <!-- Menú hamburguesa oculto por defecto, solo visible en móviles -->
+    <nav class="mobile-menu">
         <a href="index.html">Inicio</a>
         <a href="sobre-nosotros.html">Sobre Nosotros</a>
         <a href="portafolio.html">Portafolio</a>
