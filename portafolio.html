@@ -121,32 +121,58 @@
         }
 
         /* Hero Section */
-        .hero {
-            height: 100vh;
-            background: url('https://i.postimg.cc/9M96wMVR/DALL-E-2024-11-01-13-43-16-A-high-definition-4-K-wallpaper-showing-construction-workers-at-great-he.jpg') center/cover no-repeat;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: #fff;
-            padding: 0 1rem;
-            animation: fadeIn 2s;
-        }
+        @keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
 
-        .hero h2 {
-            font-size: 4rem;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
-            animation: fadeInDown 1.5s;
-        }
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background: url('https://i.postimg.cc/9M96wMVR/DALL-E-2024-11-01-13-43-16-A-high-definition-4-K-wallpaper-showing-construction-workers-at-great-he.jpg') center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    padding: 0 1rem;
+}
 
-        .hero p {
-            font-size: 1.5rem;
-            max-width: 600px;
-            margin-bottom: 2rem;
-            animation: fadeInUp 1.5s;
-        }
+.hero h2 {
+    font-size: 4rem;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);
+    opacity: 0; /* Oculto hasta la animación */
+    animation: fadeInScale 1.2s ease-out forwards; /* Aplica la animación de escala */
+}
+
+.hero p {
+    font-size: 1.7rem;
+    max-width: 700px;
+    margin-bottom: 2rem;
+    color: #ffffff;
+    font-weight: bold;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9), -1px -1px 2px rgba(255, 255, 255, 0.2);
+    opacity: 0; /* Oculto hasta la animación */
+    animation: fadeInScale 1.2s ease-out forwards; /* Aplica la animación de escala */
+    animation-delay: 0.3s; /* Retardo para la descripción */
+}
+
+/* Ajuste para dispositivos móviles */
+@media (max-width: 768px) {
+    .hero h2 {
+        font-size: 2.5rem; /* Reduce el tamaño del título en dispositivos móviles */
+    }
+}
+
 
         .hero button {
             padding: 1rem 3rem;
@@ -228,6 +254,51 @@
             text-align: center;
             animation: fadeIn 2s;
         }
+        /* Modal Styles */
+        .modal {
+            display: none; /* Oculto por defecto */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .modal-content {
+            position: relative;
+            margin: 10% auto;
+            padding: 1rem;
+            width: 80%;
+            max-width: 800px;
+            background-color: #fff;
+            border-radius: 10px;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .modal-images {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .modal-images img {
+            width: 100%;
+            max-width: 100px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -257,23 +328,33 @@
 <section id="services" class="services">
     <h3>Nuestros Servicios</h3>
     <div class="service-list">
-        <div class="service-item">
+        <div class="service-item" onclick="openModal(1)">
             <img src="https://via.placeholder.com/300x200" alt="Servicio 1">
-            <h4>Servicio 1</h4>
-            <p>Descripción del servicio.</p>
+            <h4>Limpieza de canaletas y techumbres</h4>
+            <p>Eliminación de obstrucciones y suciedad en canaletas y techos para evitar daños por acumulación de agua.</p>
         </div>
-        <div class="service-item">
+        <div class="service-item" onclick="openModal(2)">
             <img src="https://via.placeholder.com/300x200" alt="Servicio 2">
-            <h4>Servicio 2</h4>
-            <p>Descripción del servicio.</p>
+            <h4>Hidrolavado de superficies</h4>
+            <p>Limpieza profunda de todo tipo de superficies mediante equipos de alta presión, eliminando manchas y residuos.</p>
         </div>
-        <div class="service-item">
+        <div class="service-item" onclick="openModal(3)">
             <img src="https://via.placeholder.com/300x200" alt="Servicio 3">
-            <h4>Servicio 3</h4>
-            <p>Descripción del servicio.</p>
+            <h4>Restauraciones patrimoniales de fachadas</h4>
+            <p>Reparación y conservación de fachadas históricas, manteniendo el valor arquitectónico original.</p>
         </div>
     </div>
 </section>
+
+<!-- Modal para galería de fotos -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="modal-images" id="modal-images">
+            <!-- Aquí se cargarán las imágenes dinámicamente -->
+        </div>
+    </div>
+</div>
 
 <footer class="footer">
     <p>&copy; 2024 SGC Servicios - Todos los derechos reservados</p>
@@ -288,6 +369,44 @@
         navLinks.classList.toggle('active');
         hamburger.classList.toggle('open');
     });
+
+    // Función para abrir el modal y mostrar las imágenes
+    function openModal(serviceId) {
+        const modal = document.getElementById("modal");
+        const modalImagesContainer = document.getElementById("modal-images");
+        
+        // Limpia las imágenes anteriores
+        modalImagesContainer.innerHTML = '';
+
+        // Agrega las imágenes según el servicio seleccionado
+        const images = {
+            1: ["https://i.postimg.cc/gkXVyprN/Imagen-de-Whats-App-2024-10-29-a-las-14-22-30-bab2b09d.jpg", "https://i.postimg.cc/gkXVyprN/Imagen-de-Whats-App-2024-10-29-a-las-14-22-30-bab2b09d.jpg", "https://i.postimg.cc/gkXVyprN/Imagen-de-Whats-App-2024-10-29-a-las-14-22-30-bab2b09d.jpg"],
+            2: ["https://via.placeholder.com/150x100", "https://via.placeholder.com/150x100", "https://via.placeholder.com/150x100"],
+            3: ["https://via.placeholder.com/150x100", "https://via.placeholder.com/150x100", "https://via.placeholder.com/150x100"]
+        };
+
+        images[serviceId].forEach(src => {
+            const img = document.createElement("img");
+            img.src = src;
+            modalImagesContainer.appendChild(img);
+        });
+
+        // Muestra el modal
+        modal.style.display = "block";
+    }
+
+    // Función para cerrar el modal
+    function closeModal() {
+        document.getElementById("modal").style.display = "none";
+    }
+
+    // Cierra el modal al hacer clic fuera del contenido
+    window.onclick = function(event) {
+        const modal = document.getElementById("modal");
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
 </script>
 
 </body>
