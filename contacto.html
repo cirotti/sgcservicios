@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGC - Contáctanos</title>
+    <style>
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #333;
+            overflow-x: hidden;
+            perspective: 1500px;
+        }
+
+        /* Estilos del header */
+        header {
+            background-color: #FF6A00;
+            padding: 1.5rem;
+            color: white;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            animation: fadeInDown 1.5s ease-in-out both;
+        }
+
+        /* Ajuste del tamaño del logo */
+        .logo img {
+            width: 160px; /* Cambia el tamaño según prefieras */
+            height: auto;
+        }
+
+
+        /* Botón de regreso al inicio en móviles */
+        .mobile-btn {
+    display: none;
+    font-size: 1.5rem;
+    color: #FF6A00;  /* Color de la flecha en naranja */
+    cursor: pointer;
+    background-color: #ffffff;  /* Fondo blanco */
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 50px;
+    outline: none;
+    position: fixed;
+    top: 1.5rem;  /* Posición desde la parte superior */
+    right: 1.5rem;  /* Posición desde la parte derecha */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    animation: bounce 2s infinite alternate;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.mobile-btn:hover {
+    background-color: #f0f0f0;  /* Cambia el fondo al pasar el mouse */
+    transform: scale(1.2);
+}
+
+/* Animación de rebote */
+@keyframes bounce {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+/* Mostrar el botón solo en móviles */
+@media (max-width: 768px) {
+    .mobile-btn {
+        display: block;
+    }
+}
+
+
+        /* Fondo animado 3D */
+        .background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            opacity: 0.2;
+        }
+
+        .background span {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 106, 0, 0.2);
+            border-radius: 50%;
+            animation: float 12s infinite ease-in-out alternate;
+            transform: perspective(1000px) rotateX(20deg) rotateY(20deg);
+        }
+
+        .background span:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+        .background span:nth-child(2) { top: 30%; right: 15%; animation-delay: 2s; }
+        .background span:nth-child(3) { bottom: 25%; left: 20%; animation-delay: 4s; }
+        .background span:nth-child(4) { bottom: 20%; right: 5%; animation-delay: 6s; }
+
+        /* Animaciones avanzadas */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); }
+            50% { transform: translateY(-30px) translateX(30px) rotate(20deg); }
+        }
+
+        @keyframes fadeInDown {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Hero */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('construction-background.jpg') no-repeat center center/cover;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 1.5rem;
+            animation: fadeInDown 2s ease-in-out;
+            perspective: 1500px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            animation: fadeIn 1.5s ease-in-out both;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            animation: fadeInUp 2s ease-in-out;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 4rem 1.5rem;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            color: #FF6A00;
+            margin-bottom: 1.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 1rem 0;
+            opacity: 0;
+            animation: fadeInUp 1.5s forwards;
+        }
+
+        .contact-info div {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.2rem;
+            color: #333;
+            animation: fadeInLeft 2s ease;
+        }
+
+        .icon {
+            color: #FF6A00;
+            font-size: 1.5rem;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            animation: bounceInUp 2s ease;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-form input:focus, .contact-form textarea:focus {
+            border-color: #FF6A00;
+            outline: none;
+        }
+
+        .contact-form button {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: #FF6A00;
+            color: #fff;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .contact-form button:hover {
+            background-color: #ff8533;
+            transform: scale(1.05);
+        }
+
+        /* Gallery */
+        .gallery {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding: 2rem 0;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .gallery img {
+            width: 150px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            animation: zoomIn 1.5s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.1) rotateY(15deg);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+            animation: fadeInUp 2s ease;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+            .mobile-btn {
+                display: block;
+            }
+            .contact-info {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fondo animado 3D -->
+    <div class="background">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="https://i.postimg.cc/pdTrBb0B/logo.png" alt="SGC Logo"> 
+        </div>
+        <button class="mobile-btn" onclick="redirectToHome()">⬆</button>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div>
+            <h1>Contáctanos</h1>
+            <p>Estamos aquí para ayudarte a llevar tu proyecto al siguiente nivel</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <h2>Contacta con nosotros</h2>
+        <div class="contact-info">
+            <div><span class="icon">📞</span> <strong>Teléfono:</strong> +56 9 9336 6232</div>
+            <div><span class="icon">📧</span> <strong>Email:</strong> contacto@sgcservicios.com</div>
+        </div>
+
+        <div class="contact-form">
+            <form action="mailto:contacto@sgcservicios.com" method="post" enctype="text/plain">
+                <input type="text" name="name" placeholder="Nombre completo" required>
+                <input type="email" name="email" placeholder="Correo electrónico" required>
+                <input type="text" name="phone" placeholder="Número de teléfono" required>
+                <textarea name="message" rows="5" placeholder="Tu mensaje" required></textarea>
+                <button type="submit">Enviar mensaje</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 SGC - Todos los derechos reservados</p>
+    </footer>
+
+    <script>
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
